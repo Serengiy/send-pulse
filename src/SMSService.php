@@ -33,4 +33,34 @@ final class SMSService extends SendPulseAbstract
     {
         return $this->post('sms/send', $payload);
     }
+
+    /**
+     * @return array{
+     *      result: bool,
+     *      data: array{
+     *          id: int,
+     *          address_book_id: int,
+     *          currency: string,
+     *          company_price: string,
+     *          send_date: string,
+     *          date_created: string,
+     *          sender_name: string,
+     *          task_phones_info: array<array{
+     *              phone: int,
+     *              status: int,
+     *              status_explain: string,
+     *              country_code: string,
+     *              money_spent: float
+     *                      }>
+     *          }
+     *      }
+     * }
+     * /
+     *
+     * @throws \Exception If the request fails.
+     */
+    public function getCampaignInfo(string $id): array
+    {
+        return $this->get('sms/campaigns/info/' . $id);
+    }
 }
