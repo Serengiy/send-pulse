@@ -33,13 +33,4 @@ final class SMSService extends SendPulseAbstract
     {
         return $this->post('sms/send', $payload);
     }
-
-
-    /**
-     * @throws \Exception
-     */
-    public function listOfSenders(): array
-    {
-        return $this->get('sms/black_list');
-    }
 }
